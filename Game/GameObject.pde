@@ -20,6 +20,10 @@ public class GameObject {
       rect(x, y, width, height);
     }
   }
+  
+  void update(){
+    
+  }
 
   void setColor(int r, int g, int b) {
     r = constrain(r, 0, 255);

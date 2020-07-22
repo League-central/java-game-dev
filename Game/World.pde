@@ -1,8 +1,29 @@
 public class World {
+  GameObject player;
   ArrayList<GameObject> enemies = new ArrayList<GameObject>(); 
   ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
 
   World() {
+  }
+
+  void update(){
+    player.update();
+    for(GameObject enemy : enemies){
+      enemy.update();
+    }
+    for(GameObject obstacle : obstacles){
+      obstacle.update();
+    }
+  }
+  
+  void draw(){
+    player.draw();
+    for(GameObject enemy : enemies){
+      enemy.draw();
+    }
+    for(GameObject obstacle : obstacles){
+      obstacle.draw();
+    }
   }
 
   boolean checkCollision(GameObject object) {
