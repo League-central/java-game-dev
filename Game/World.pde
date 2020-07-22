@@ -26,14 +26,14 @@ public class World {
     }
   }
 
-  boolean checkCollision(GameObject object) {
+  public boolean checkCollision(GameObject object) {
     if (checkCollisionWith(object, enemies) || checkCollisionWith(object, obstacles)) {
       return true;
     }
     return false;
   }
 
-  boolean checkCollisionWith(GameObject object, ArrayList<GameObject> list) {
+  public boolean checkCollisionWith(GameObject object, ArrayList<GameObject> list) {
     for (GameObject listObj : list) {
       if (checkCollisionBetween(object, listObj)) {
         return true;
@@ -42,7 +42,7 @@ public class World {
     return false;
   }
 
-  boolean checkCollisionBetween(GameObject a, GameObject b) {
+  public boolean checkCollisionBetween(GameObject a, GameObject b) {
     if (a.x + a.width >= b.x && a.x <= b.x + b.width && a.y + a.height >= b.y && a.y < b.y + b.height) {
       return true;
     }

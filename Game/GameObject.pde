@@ -37,4 +37,11 @@ public class GameObject {
     image = loadImage(imageName);
     image.resize(width, height);
   }
+  
+  public boolean hasGoneOffScreen(){
+    if(x > Game.windowWidth || x + this.width < 0 || y > Game.windowHeight || y + this.height < 0){
+      return true;
+    }
+    return false;
+  }
 }
