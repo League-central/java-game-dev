@@ -11,6 +11,14 @@ public class GameObject {
     this.width = width;
     this.height = height;
   }
+  
+  GameObject(int x, int y, int width, int height, String imageName) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+    setImage(imageName);
+  }
 
   void draw() {
     if (image != null) {
