@@ -1,5 +1,16 @@
 public class Projectile extends GameObject{
-  Projectile(int x, int y, int width, int height){
+  Vector velocity;
+  Projectile(double x, double y, int width, int height, Vector velocity){
     super(x,y,width,height);
+    this.velocity = velocity;
+  }
+  
+  void update(){
+    x += velocity.x;
+    y += velocity.y;
+  }
+  
+  void setVelocity(Vector velocity){
+    this.velocity = velocity;
   }
 }

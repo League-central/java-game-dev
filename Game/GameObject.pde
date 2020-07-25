@@ -1,19 +1,19 @@
 public class GameObject {
   PImage image;
   color objColor = color(100, 0, 0);
-  int x;
-  int y;
+  double x;
+  double y;
   int width;
   int height;
 
-  GameObject(int x, int y, int width, int height) {
+  GameObject(double x, double y, int width, int height) {
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
   }
 
-  GameObject(int x, int y, int width, int height, String imageName) {
+  GameObject(double x, double y, int width, int height, String imageName) {
     this.x = x;
     this.y = y;
     this.width = width;
@@ -23,10 +23,10 @@ public class GameObject {
 
   void draw() {
     if (image != null) {
-      image(image, x, y);
+      image(image, (int)x, (int)y);
     } else {
       fill(objColor);
-      rect(x, y, width, height);
+      rect((int)x, (int)y, width, height);
     }
   }
 
