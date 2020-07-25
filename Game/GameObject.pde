@@ -1,4 +1,5 @@
-public class GameObject {
+public abstract class GameObject {
+  String type;
   PImage image;
   color objColor = color(100, 0, 0);
   double x;
@@ -7,6 +8,7 @@ public class GameObject {
   int height;
 
   GameObject(double x, double y, int width, int height) {
+    type = "GameObject";
     this.x = x;
     this.y = y;
     this.width = width;
@@ -30,8 +32,9 @@ public class GameObject {
     }
   }
 
-  void update() {
-  }
+  abstract void update();
+  
+  abstract void collidedWith(GameObject other);
 
   void setColor(int r, int g, int b) {
     r = constrain(r, 0, 255);
