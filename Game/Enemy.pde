@@ -1,6 +1,6 @@
-public class Emeny extends GameObject {
+public class Enemy extends GameObject {
 
-  Emeny(double x, double y, int width, int height) {
+  Enemy(double x, double y, int width, int height) {
     super(x, y, width, height);
     type = "Enemy";
   }

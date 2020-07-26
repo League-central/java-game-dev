@@ -1,5 +1,6 @@
 public class World {
   Player player;
+  double gravity = 0.2;
   ArrayList<GameObject> enemies = new ArrayList<GameObject>(); 
   ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
   ArrayList<GameObject> projectiles = new ArrayList<GameObject>();
@@ -7,18 +8,19 @@ public class World {
 
   World() {
     player = new Player(50,50,20,20);
+    obstacles.add(new Obstacle(20, 400, 400, 30));
   }
 
   void update() {
     player.update();
     for (GameObject enemy : enemies) {
-      enemy.update();
+      enemy.updateObject();
     }
     for (GameObject obstacle : obstacles) {
-      obstacle.update();
+      obstacle.updateObject();
     }
     for (GameObject projectile : projectiles) {
-      projectile.update();
+      projectile.updateObject();
     }
     purgeObjects();
   }

@@ -6,12 +6,13 @@ public abstract class GameObject {
   double x;
   double y;
   boolean isActive = true;
+  boolean isAffectedByGravity = true;
   int width;
   int height;
 
   GameObject(double x, double y, int width, int height) {
     type = "GameObject";
-    this.velocity = new Vector(0,0);
+    this.velocity = new Vector(0, 0);
     this.x = x;
     this.y = y;
     this.width = width;
@@ -32,6 +33,17 @@ public abstract class GameObject {
     } else {
       fill(objColor);
       rect((int)x, (int)y, width, height);
+    }
+  }
+
+  void updateObject() {
+    applyGravity();
+    update();
+  }
+  
+  void applyGravity() {
+    if (isAffectedByGravity) {
+      addVelocity(0, world.gravity);
     }
   }
 
@@ -58,20 +70,20 @@ public abstract class GameObject {
     }
     return false;
   }
-  
+
   void setVelocity(Vector velocity) {
     this.velocity = velocity;
   }
-  
+
   void setVelocity(double x, double y) {
     this.velocity = new Vector(x, y);
   }
-  
-  void addVelocity(Vector velocity){
+
+  void addVelocity(Vector velocity) {
     this.velocity = new Vector(this.velocity.x + velocity.x, this.velocity.y + velocity.y);
   }
-  
-  void addVelocity(double x, double y){
+
+  void addVelocity(double x, double y) {
     this.velocity = new Vector(this.velocity.x + x, this.velocity.y + y);
   }
 }
