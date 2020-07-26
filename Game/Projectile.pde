@@ -1,5 +1,4 @@
 public class Projectile extends GameObject {
-  Vector velocity;
   Projectile(double x, double y, int width, int height, Vector velocity) {
     super(x, y, width, height);
     type = "Projectile";

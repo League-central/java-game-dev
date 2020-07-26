@@ -1,4 +1,5 @@
 public abstract class GameObject {
+  Vector velocity;
   String type;
   PImage image;
   color objColor = color(100, 0, 0);
@@ -9,6 +10,7 @@ public abstract class GameObject {
 
   GameObject(double x, double y, int width, int height) {
     type = "GameObject";
+    this.velocity = new Vector(0,0);
     this.x = x;
     this.y = y;
     this.width = width;
