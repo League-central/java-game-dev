@@ -2,6 +2,8 @@ public class World {
   Player player;
   ArrayList<GameObject> enemies = new ArrayList<GameObject>(); 
   ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
+  ArrayList<GameObject> projectiles = new ArrayList<GameObject>();
+  
 
   World() {
   }
@@ -14,6 +16,9 @@ public class World {
     for (GameObject obstacle : obstacles) {
       obstacle.update();
     }
+    for (GameObject projectile : projectiles) {
+      projectile.update();
+    }
   }
 
   void draw() {
@@ -23,6 +28,9 @@ public class World {
     }
     for (GameObject obstacle : obstacles) {
       obstacle.draw();
+    }
+    for (GameObject projectile : projectiles) {
+      projectile.draw();
     }
   }
 
