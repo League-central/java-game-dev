@@ -5,8 +5,10 @@ public abstract class GameObject {
   color objColor = color(100, 0, 0);
   double x;
   double y;
+  double drag = 0.2;
   boolean isActive = true;
   boolean isAffectedByGravity = true;
+  boolean isAffectedByDrag = false;
   int width;
   int height;
 
