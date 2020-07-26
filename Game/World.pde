@@ -12,7 +12,7 @@ public class World {
   }
 
   void update() {
-    player.update();
+    player.updateObject();
     for (GameObject enemy : enemies) {
       enemy.updateObject();
     }
