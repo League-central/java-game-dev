@@ -10,10 +10,6 @@ public class Projectile extends GameObject {
     y += velocity.y;
   }
 
-  void setVelocity(Vector velocity) {
-    this.velocity = velocity;
-  }
-
   void collidedWith(GameObject other) {
   }
 }

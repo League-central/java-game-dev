@@ -5,6 +5,7 @@ public abstract class GameObject {
   color objColor = color(100, 0, 0);
   double x;
   double y;
+  boolean isActive = true;
   int width;
   int height;
 
@@ -56,5 +57,21 @@ public abstract class GameObject {
       return true;
     }
     return false;
+  }
+  
+  void setVelocity(Vector velocity) {
+    this.velocity = velocity;
+  }
+  
+  void setVelocity(double x, double y) {
+    this.velocity = new Vector(x, y);
+  }
+  
+  void addVelocity(Vector velocity){
+    this.velocity = new Vector(this.velocity.x + velocity.x, this.velocity.y + velocity.y);
+  }
+  
+  void addVelocity(double x, double y){
+    this.velocity = new Vector(this.velocity.x + x, this.velocity.y + y);
   }
 }

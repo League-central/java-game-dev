@@ -9,5 +9,8 @@ public class Emeny extends GameObject {
   }
 
   void collidedWith(GameObject other) {
+    if(other.type.equals("Projectile")){
+      isActive = false;
+    }
   }
 }

@@ -6,6 +6,7 @@ public class World {
   
 
   World() {
+    player = new Player(50,50,20,20);
   }
 
   void update() {
@@ -19,6 +20,7 @@ public class World {
     for (GameObject projectile : projectiles) {
       projectile.update();
     }
+    purgeObjects();
   }
 
   void draw() {
@@ -33,9 +35,27 @@ public class World {
       projectile.draw();
     }
   }
+  
+  void purgeObjects(){
+    for (int i = enemies.size()-1; i >= 0; i--) {
+      if(enemies.get(i).isActive == false){
+        enemies.remove(i);
+      }
+    }
+    for (int i = obstacles.size()-1; i >= 0; i--) {
+      if(obstacles.get(i).isActive == false){
+        obstacles.remove(i);
+      }
+    }
+    for (int i = projectiles.size()-1; i >= 0; i--) {
+      if(projectiles.get(i).isActive == false){
+        projectiles.remove(i);
+      }
+    }
+  }
 
-  public boolean checkCollision(GameObject object) {
-    if (checkCollisionWith(object, enemies) || checkCollisionWith(object, obstacles)) {
+  public boolean checkCollisionWithAny(GameObject object) {
+    if (checkCollisionWith(object, enemies) || checkCollisionWith(object, obstacles) || checkCollisionWith(object, projectiles)) {
       return true;
     }
     return false;
@@ -59,7 +79,6 @@ public class World {
 
     return false;
   }
-  
   
   Vector calculateVector(GameObject from, GameObject to){
     return new Vector(to.x - from.x, to.y - from.y);
