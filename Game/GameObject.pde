@@ -33,7 +33,14 @@ public abstract class GameObject {
     if (image != null) {
       image(image, (int)x, (int)y);
     } else {
+      stroke(0,0,0);
       fill(objColor);
+      rect((int)x, (int)y, width, height);
+    }
+    
+    if(displayDebugColliders){
+      stroke(255,0,0);
+      noFill();
       rect((int)x, (int)y, width, height);
     }
   }

@@ -2,6 +2,7 @@ World world;
 PImage backgroundImage;
 static int windowWidth;
 static int windowHeight;
+boolean displayDebugColliders = false;
 
 void setup() {
   size(800, 600);
@@ -38,6 +39,11 @@ void keyPressed() {
   // A key
   if (keyCode == 65) {
     world.player.left = true;
+  }
+  // P key
+  if(keyCode == 80){
+    displayDebugColliders = !displayDebugColliders;
+    println(displayDebugColliders);
   }
 }
 
