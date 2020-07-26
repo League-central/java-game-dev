@@ -21,22 +21,41 @@ void draw() {
   world.update();
 }
 
-void keyPressed(){
-    println(keyCode);
-    // W Key
-    if(keyCode == 87){
-      world.player.addVelocity(0,-1);
-    }
-    // D key
-    if(keyCode == 68){
-      world.player.addVelocity(1,0);
-    }
-    // S key
-    if(keyCode == 83){
-      world.player.addVelocity(0,1);
-    }
-    // A key
-    if(keyCode == 65){
-      world.player.addVelocity(-1,0);
-    }
+void keyPressed() {
+  println(keyCode);
+  // W Key
+  if (keyCode == 87) {
+    world.player.up = true;
   }
+  // D key
+  if (keyCode == 68) {
+    world.player.right = true;
+  }
+  // S key
+  if (keyCode == 83) {
+    world.player.down = true;
+  }
+  // A key
+  if (keyCode == 65) {
+    world.player.left = true;
+  }
+}
+
+void keyReleased() {
+  // W Key
+  if (keyCode == 87) {
+    world.player.up = false;
+  }
+  // D key
+  if (keyCode == 68) {
+    world.player.right = false;
+  }
+  // S key
+  if (keyCode == 83) {
+    world.player.down = false;
+  }
+  // A key
+  if (keyCode == 65) {
+    world.player.left = false;
+  }
+}
