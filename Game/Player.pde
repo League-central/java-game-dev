@@ -1,5 +1,6 @@
 public class Player extends GameObject {
   double speedLimit = 8;
+  double jumpStrength = 5;
   boolean left = false;
   boolean right = false;
   boolean up = false;
@@ -20,8 +21,9 @@ public class Player extends GameObject {
     applyDrag();
     if (up && !isAffectedByGravity) {
       addVelocity(0, -1);
-    } else if (up) {
-      setVelocity(velocity.x, -5);
+    } else if (up && canJump) {
+      setVelocity(velocity.x, -jumpStrength);
+      canJump = false;
     }
     if (down) {
       addVelocity(0, 1);
@@ -32,43 +34,40 @@ public class Player extends GameObject {
     if (right) {
       addVelocity(1, 0);
     }
-    if(isAffectedByGravity && Math.abs(velocity.x) > speedLimit){
+    if (isAffectedByGravity && Math.abs(velocity.x) > speedLimit) {
       setVelocity(speedLimit*Math.signum(velocity.x), velocity.y);
-    }
-    else if (!isAffectedByGravity && velocity.getMagnitude() > speedLimit) {
+    } else if (!isAffectedByGravity && velocity.getMagnitude() > speedLimit) {
       Vector norm = velocity.getNormalized();
       velocity = new Vector(norm.x * speedLimit, norm.y * speedLimit);
     }
     double grav = !isAffectedByGravity ? 1 : 0.5;
-    if(!willCollideAt(x+velocity.x, y+velocity.y)){
+    if (!willCollideAt(x+velocity.x, y+velocity.y)) {
       x += velocity.x;
       y += velocity.y;
-    }
-    else if(!willCollideAt(x+velocity.x, y)){
+    } else if (!willCollideAt(x+velocity.x, y)) {
       x += velocity.x;
       velocity.y*=grav;
-    }
-    else if(!willCollideAt(x, y+velocity.y)){
+      canJump = true;
+    } else if (!willCollideAt(x, y+velocity.y)) {
       y += velocity.y;
       velocity.x*=0.5;
     }
   }
-  
-  void applyDrag(){
+
+  void applyDrag() {
     double xDrag = (left || right) ? 1 : 1-drag;
     double yDrag = (up || down || isAffectedByGravity) ? 1 : 1-drag;
-    setVelocity(velocity.x*xDrag,velocity.y*yDrag);
-    
+    setVelocity(velocity.x*xDrag, velocity.y*yDrag);
   }
 
-  boolean willCollideAt(double x, double y){
+  boolean willCollideAt(double x, double y) {
     GameObject check = new CollisionCheck(x, y, width, height);
-    if(world.checkCollisionWith(check,world.obstacles)){
+    if (world.checkCollisionWith(check, world.obstacles)) {
       return true;
     }
     return false;
   }
-  
+
   void collidedWith(GameObject other) {
   }
 }
