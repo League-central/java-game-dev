@@ -6,22 +6,22 @@ public class World {
   World() {
   }
 
-  void update(){
+  void update() {
     player.update();
-    for(GameObject enemy : enemies){
+    for (GameObject enemy : enemies) {
       enemy.update();
     }
-    for(GameObject obstacle : obstacles){
+    for (GameObject obstacle : obstacles) {
       obstacle.update();
     }
   }
-  
-  void draw(){
+
+  void draw() {
     player.draw();
-    for(GameObject enemy : enemies){
+    for (GameObject enemy : enemies) {
       enemy.draw();
     }
-    for(GameObject obstacle : obstacles){
+    for (GameObject obstacle : obstacles) {
       obstacle.draw();
     }
   }

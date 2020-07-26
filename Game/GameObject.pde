@@ -33,7 +33,7 @@ public abstract class GameObject {
   }
 
   abstract void update();
-  
+
   abstract void collidedWith(GameObject other);
 
   void setColor(int r, int g, int b) {
