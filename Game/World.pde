@@ -59,4 +59,13 @@ public class World {
 
     return false;
   }
+  
+  
+  Vector calculateVector(GameObject from, GameObject to){
+    return new Vector(to.x - from.x, to.y - from.y);
+  }
+  
+  Vector calculateNormalizedVector(GameObject from, GameObject to){
+    return new Vector(to.x - from.x, to.y - from.y).getNormalized();
+  }
 }

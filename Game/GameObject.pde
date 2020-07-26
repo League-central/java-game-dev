@@ -1,7 +1,7 @@
-public abstract class GameObject {
+public abstract class GameObject {  
+  PImage image;
   Vector velocity;
   String type;
-  PImage image;
   color objColor = color(100, 0, 0);
   double x;
   double y;
