@@ -9,7 +9,7 @@ public class Enemy extends GameObject {
   }
 
   void collidedWith(GameObject other) {
-    if(other.type.equals("Projectile")){
+    if (other.type.equals("Projectile")) {
       isActive = false;
     }
   }

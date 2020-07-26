@@ -40,17 +40,18 @@ public class Player extends GameObject {
       Vector norm = velocity.getNormalized();
       velocity = new Vector(norm.x * speedLimit, norm.y * speedLimit);
     }
-    double grav = !isAffectedByGravity ? 1 : 0.5;
     if (!willCollideAt(x+velocity.x, y+velocity.y)) {
       x += velocity.x;
       y += velocity.y;
     } else if (!willCollideAt(x+velocity.x, y)) {
       x += velocity.x;
-      velocity.y*=grav;
-      canJump = true;
+      velocity.y*=0.2;
+      if (velocity.y > 0) {
+        canJump = true;
+      }
     } else if (!willCollideAt(x, y+velocity.y)) {
       y += velocity.y;
-      velocity.x*=0.5;
+      velocity.x*=0.2;
     }
   }
 

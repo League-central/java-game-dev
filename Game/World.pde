@@ -4,10 +4,10 @@ public class World {
   ArrayList<GameObject> enemies = new ArrayList<GameObject>(); 
   ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
   ArrayList<GameObject> projectiles = new ArrayList<GameObject>();
-  
+
 
   World() {
-    player = new Player(50,50,20,20);
+    player = new Player(50, 50, 20, 20);
     obstacles.add(new Obstacle(20, 400, 400, 30));
   }
 
@@ -37,20 +37,20 @@ public class World {
       projectile.draw();
     }
   }
-  
-  void purgeObjects(){
+
+  void purgeObjects() {
     for (int i = enemies.size()-1; i >= 0; i--) {
-      if(enemies.get(i).isActive == false){
+      if (enemies.get(i).isActive == false) {
         enemies.remove(i);
       }
     }
     for (int i = obstacles.size()-1; i >= 0; i--) {
-      if(obstacles.get(i).isActive == false){
+      if (obstacles.get(i).isActive == false) {
         obstacles.remove(i);
       }
     }
     for (int i = projectiles.size()-1; i >= 0; i--) {
-      if(projectiles.get(i).isActive == false){
+      if (projectiles.get(i).isActive == false) {
         projectiles.remove(i);
       }
     }
@@ -81,12 +81,12 @@ public class World {
 
     return false;
   }
-  
-  Vector calculateVector(GameObject from, GameObject to){
+
+  Vector calculateVector(GameObject from, GameObject to) {
     return new Vector(to.x - from.x, to.y - from.y);
   }
-  
-  Vector calculateNormalizedVector(GameObject from, GameObject to){
+
+  Vector calculateNormalizedVector(GameObject from, GameObject to) {
     return new Vector(to.x - from.x, to.y - from.y).getNormalized();
   }
 }

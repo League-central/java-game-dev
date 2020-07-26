@@ -41,9 +41,8 @@ void keyPressed() {
     world.player.left = true;
   }
   // P key
-  if(keyCode == 80){
+  if (keyCode == 80) {
     displayDebugColliders = !displayDebugColliders;
-    println(displayDebugColliders);
   }
 }
 

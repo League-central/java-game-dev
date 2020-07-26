@@ -33,13 +33,13 @@ public abstract class GameObject {
     if (image != null) {
       image(image, (int)x, (int)y);
     } else {
-      stroke(0,0,0);
+      stroke(0, 0, 0);
       fill(objColor);
       rect((int)x, (int)y, width, height);
     }
-    
-    if(displayDebugColliders){
-      stroke(255,0,0);
+
+    if (displayDebugColliders) {
+      stroke(255, 0, 0);
       noFill();
       rect((int)x, (int)y, width, height);
     }
@@ -48,11 +48,11 @@ public abstract class GameObject {
   void updateObject() {
     applyGravity();
     update();
-    if(hasGoneOffScreen()){
+    if (hasGoneOffScreen()) {
       isActive = false;
     }
   }
-  
+
   void applyGravity() {
     if (isAffectedByGravity) {
       addVelocity(0, world.gravity);

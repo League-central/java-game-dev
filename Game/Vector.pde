@@ -14,5 +14,4 @@ public class Vector {
     double mag = getMagnitude();
     return new Vector((x/mag), (y/mag));
   }
-  
 }
