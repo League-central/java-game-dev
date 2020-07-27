@@ -1,10 +1,10 @@
 public class Player extends GameObject {
   double speedLimit = 8;
-  double jumpStrength = 5;
-  boolean left = false;
-  boolean right = false;
-  boolean up = false;
-  boolean down = false;
+  double jumpStrength = 9;
+  boolean left = true;
+  boolean right = true;
+  boolean up = true;
+  boolean down = true;
   boolean canJump = true;
   Player(double x, double y, int width, int height) {
     super(x, y, width, height);

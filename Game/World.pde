@@ -7,7 +7,10 @@ public class World {
 
 
   World() {
-    player = new Player(50, 50, 20, 20);
+
+    player = new Player(190, 100, 100, 100);
+        player.setImage("tank.png");
+        player.setImage("pea.jpeg");
     obstacles.add(new Obstacle(20, 400, 400, 30));
   }
 
