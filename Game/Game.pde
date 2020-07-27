@@ -16,7 +16,7 @@ void draw() {
   if (backgroundImage != null) {
     background(backgroundImage);
   } else {
-    background(255, 255, 255);
+    background(66, 81, 234);
   }
   world.draw();
   world.update();

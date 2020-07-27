@@ -9,7 +9,7 @@ public class Player extends GameObject {
   Player(double x, double y, int width, int height) {
     super(x, y, width, height);
     type = "Player";
-    isAffectedByGravity = true;
+    isAffectedByGravity = false;
     isAffectedByDrag = true;
   }
 
@@ -70,5 +70,21 @@ public class Player extends GameObject {
   }
 
   void collidedWith(GameObject other) {
+  public class Obstacle extends GameObject {
+
+  Obstacle(double x, double y, int width, int height) {
+    super(x, y, width, height);
+    type = "Obstacle";
+    isAffectedByGravity = false;
   }
-}
+
+  void update() {
+    x += velocity.x;
+    y += velocity.y;
+  }
+
+  void collidedWith(GameObject other) {
+  
+ if (other.type.equals("Spikes")) {
+      isActive = false;}
+  }}}

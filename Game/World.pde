@@ -5,10 +5,10 @@ public class World {
   ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
   ArrayList<GameObject> projectiles = new ArrayList<GameObject>();
 
-
   World() {
-    player = new Player(50, 50, 20, 20);
-    obstacles.add(new Obstacle(20, 400, 400, 30));
+    player = new Player(50, 50, 100, 100);
+    player.setImage("cat.png");
+   obstacles.add(new Obstacle(20, 400, 400, 30));
   }
 
   void update() {
