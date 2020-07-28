@@ -8,7 +8,11 @@ public class World {
   World() {
     player = new Player(50, 50, 100, 100);
     player.setImage("cat.png");
-   obstacles.add(new Obstacle(20, 400, 400, 30));
+   
+   projectiles.add( new Projectile(20, 400, 400, 30, new Vector(-5, 0)));
+   projectiles.add( new Projectile(500, 350, 240, 30, new Vector(-5, 0)));
+   projectiles.add( new Projectile(250, 200, 340, 30, new Vector(-5, 0)));
+  
   }
 
   void update() {
@@ -17,12 +21,31 @@ public class World {
       enemy.updateObject();
     }
     for (GameObject obstacle : obstacles) {
+      
       obstacle.updateObject();
     }
     for (GameObject projectile : projectiles) {
       projectile.updateObject();
+      println(projectile.x + projectile.width);
+          if (projectile.x + projectile.width <= 0){
+            println("new obstacle");
+            
+             //if it is, remove it
+          
+              //create a new one 
+    
+               projectile.x = width;
+               projectile.y = (int) random(height-player.height);
+        }
+      
     }
-    purgeObjects();
+   if(checkCollisionWith(player,projectiles)){
+     player.lives--;
+     if(player.lives <= 0){
+       println("Game Over");
+     }
+   }
+   purgeObjects();
   }
 
   void draw() {
@@ -66,6 +89,8 @@ public class World {
   public boolean checkCollisionWith(GameObject object, ArrayList<GameObject> list) {
     for (GameObject listObj : list) {
       if (checkCollisionBetween(object, listObj)) {
+        listObj.x = width;
+        listObj.y = (int) random(height-player.height);
         return true;
       }
     }

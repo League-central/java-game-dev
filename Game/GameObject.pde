@@ -48,9 +48,9 @@ public abstract class GameObject {
   void updateObject() {
     applyGravity();
     update();
-    if (hasGoneOffScreen()) {
-      isActive = false;
-    }
+    //if (hasGoneOffScreen()) {
+    //  isActive = false;
+    //}
   }
 
   void applyGravity() {

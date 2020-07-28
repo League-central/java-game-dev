@@ -1,6 +1,6 @@
 public class Spikes extends Obstacle {
 
-  Obstacle(double x, double y, int width, int height) {
+  Spikes(double x, double y, int width, int height) {
     super(x, y, width, height);
     type = "Spike";
     isAffectedByGravity = false;

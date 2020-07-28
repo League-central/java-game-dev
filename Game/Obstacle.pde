@@ -4,6 +4,7 @@ public class Obstacle extends GameObject {
     super(x, y, width, height);
     type = "Obstacle";
     isAffectedByGravity = false;
+    velocity.x = -5;
   }
 
   void update() {

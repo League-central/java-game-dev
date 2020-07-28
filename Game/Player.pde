@@ -6,6 +6,7 @@ public class Player extends GameObject {
   boolean up = false;
   boolean down = false;
   boolean canJump = true;
+  int lives = 3;
   Player(double x, double y, int width, int height) {
     super(x, y, width, height);
     type = "Player";
@@ -70,21 +71,12 @@ public class Player extends GameObject {
   }
 
   void collidedWith(GameObject other) {
-  public class Obstacle extends GameObject {
-
-  Obstacle(double x, double y, int width, int height) {
-    super(x, y, width, height);
-    type = "Obstacle";
-    isAffectedByGravity = false;
+  if (other.type.equals("Spikes")){
+ 
+    
   }
-
-  void update() {
-    x += velocity.x;
-    y += velocity.y;
-  }
-
-  void collidedWith(GameObject other) {
   
- if (other.type.equals("Spikes")) {
-      isActive = false;}
-  }}}
+
+}
+ 
+}
