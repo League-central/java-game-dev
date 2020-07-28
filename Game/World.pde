@@ -5,10 +5,20 @@ public class World {
   ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
   ArrayList<GameObject> projectiles = new ArrayList<GameObject>();
 
-
   World() {
-    player = new Player(50, 50, 20, 20);
+
+    player = new Player(190, 100, 100, 100);
+        player.setImage("tank.png");
+        
     obstacles.add(new Obstacle(20, 400, 400, 30));
+    
+    
+      Enemy bot = new  Enemy(300,300,50,50);
+      bot.setImage("pea.jpeg");
+      enemies.add(bot);
+       Enemy spike = new  Enemy(100,20,50,50);
+     spike.setImage("saw.png");
+      enemies.add(spike);
   }
 
   void update() {
@@ -21,6 +31,7 @@ public class World {
     }
     for (GameObject projectile : projectiles) {
       projectile.updateObject();
+
     }
     purgeObjects();
   }
@@ -42,7 +53,8 @@ public class World {
     for (int i = enemies.size()-1; i >= 0; i--) {
       if (enemies.get(i).isActive == false) {
         enemies.remove(i);
-      }
+      
+    }
     }
     for (int i = obstacles.size()-1; i >= 0; i--) {
       if (obstacles.get(i).isActive == false) {
