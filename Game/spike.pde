@@ -1,0 +1,16 @@
+public class Spike extends Obstacle {
+
+  Spike(double x, double y, int width, int height) {
+    super(x, y, width, height);
+    type = "Spike";
+    isAffectedByGravity = false;
+  }
+
+  void update() {
+  
+ 
+}
+
+  void collidedWith(GameObject other) {
+  }
+}

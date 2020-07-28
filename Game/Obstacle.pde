@@ -7,9 +7,10 @@ public class Obstacle extends GameObject {
   }
 
   void update() {
-    x += velocity.x;
-    y += velocity.y;
-  }
+  
+ world.obstacles.add(new Obsticle(x,y,50, 0));
+ obsticle.addVelocity(-2
+}
 
   void collidedWith(GameObject other) {
   }

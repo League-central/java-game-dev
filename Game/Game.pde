@@ -10,6 +10,8 @@ void setup() {
   windowHeight = height;
   backgroundImage = null;
   world = new World();
+backgroundImage = loadImage("abu.jpg");
+backgroundImage.resize(width,height);
 }
 
 void draw() {

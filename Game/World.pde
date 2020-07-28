@@ -7,10 +7,21 @@ public class World {
 
 
   World() {
-    player = new Player(50, 50, 20, 20);
+    player = new Player(50, 150, 75, 125);
+   player.setImage("2ev].jpg");
     obstacles.add(new Obstacle(20, 400, 400, 30));
-  }
-
+  Enemy enemy = new Enemy(300,150,300,150);
+enemy.setImage("enemy.jpg");
+enemies.add(enemy);
+  
+}
+  
+  void clearAll(){
+  enemies.clear();
+  projectiles.clear();
+  projectiles.clear();
+}
+  
   void update() {
     player.updateObject();
     for (GameObject enemy : enemies) {
