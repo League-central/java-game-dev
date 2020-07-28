@@ -81,6 +81,15 @@ public class World {
 
     return false;
   }
+  
+  public GameObject getCollisionWith(GameObject object, ArrayList<GameObject> list) {
+    for (GameObject listObj : list) {
+      if (checkCollisionBetween(object, listObj)) {
+        return listObj;
+      }
+    }
+    return null;
+  }
 
   Vector calculateVector(GameObject from, GameObject to) {
     return new Vector(to.x - from.x, to.y - from.y);

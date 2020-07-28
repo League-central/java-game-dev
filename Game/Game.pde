@@ -8,7 +8,8 @@ void setup() {
   size(800, 600);
   windowWidth = width;
   windowHeight = height;
-  backgroundImage = null;
+  backgroundImage = loadImage("landscape.png");
+  backgroundImage.resize(width, height);
   world = new World();
 }
 
