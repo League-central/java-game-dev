@@ -65,6 +65,9 @@ public class Player extends GameObject {
     GameObject check = new CollisionCheck(x, y, width, height);
     GameObject hit = world.getCollisionWith(check, world.obstacles);
     if (hit != null) {
+      if(hit.type.equals("Enemy")){
+        
+      }
       return true;
     }
     return false;
