@@ -9,11 +9,7 @@ public class World {
 
     player = new Player(190, 100, 100, 100);
         player.setImage("tank.png");
-<<<<<<< HEAD
-        
-=======
         player.setImage("pea.jpeg");
->>>>>>> 40b3668ed511ea59128ff3705003ae210fbe4d27
     obstacles.add(new Obstacle(20, 400, 400, 30));
     
     
