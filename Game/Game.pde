@@ -22,6 +22,7 @@ void draw() {
   }
   world.draw();
   world.update();
+println(mouseX+","+mouseY);
 }
 
 void keyPressed() {

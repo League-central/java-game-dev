@@ -5,12 +5,11 @@ public class World {
   ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
   ArrayList<GameObject> projectiles = new ArrayList<GameObject>();
 
-
   World() {
     player = new Player(50, 150, 75, 125);
    player.setImage("2ev].jpg");
     obstacles.add(new Obstacle(20, 400, 400, 30));
-  Enemy enemy = new Enemy(300,150,300,150);
+  Enemy enemy = new Enemy(491,201,300,150);
 enemy.setImage("enemy.jpg");
 enemies.add(enemy);
   

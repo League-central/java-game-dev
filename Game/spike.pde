@@ -7,7 +7,8 @@ public class Spike extends Obstacle {
   }
 
   void update() {
-  
+   x+=velocity.x;
+y+=velocity.y;
  
 }
 

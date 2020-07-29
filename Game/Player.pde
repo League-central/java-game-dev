@@ -1,6 +1,6 @@
 public class Player extends GameObject {
   double speedLimit = 8;
-  double jumpStrength = 5;
+  double jumpStrength = 10;
   boolean left = false;
   boolean right = false;
   boolean up = false;

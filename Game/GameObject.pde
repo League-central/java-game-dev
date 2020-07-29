@@ -27,7 +27,7 @@ public abstract class GameObject {
     this.width = width;
     this.height = height;
     setImage(imageName);
-  }
+}
 
   void draw() {
     if (image != null) {
@@ -36,8 +36,8 @@ public abstract class GameObject {
       stroke(0, 0, 0);
       fill(objColor);
       rect((int)x, (int)y, width, height);
-    }
-
+    
+  }
     if (displayDebugColliders) {
       stroke(255, 0, 0);
       noFill();
@@ -73,8 +73,9 @@ public abstract class GameObject {
 
   void setImage(String imageName) {
     image = loadImage(imageName);
-    image.resize(width, height);
+    image.resize(width,height);
   }
+
 
   public boolean hasGoneOffScreen() {
     if (x > Game.windowWidth || x + this.width < 0 || y > Game.windowHeight || y + this.height < 0) {

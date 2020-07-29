@@ -6,18 +6,18 @@ public class Enemy extends GameObject {
   }
 
   void update() {
-  if (frameCount %  80 ==0) {
+  if (frameCount %  85 ==0) {
    int rand = (int)random(0,10);
    if(rand > 5){
-    Obstacle obstacle = new Obstacle(x,y, 30,20);
+    Obstacle obstacle = new Obstacle(x,y, 50,30);
 world.obstacles.add(obstacle);
 obstacle.addVelocity(-2, 0);
     }
 else{
-  Obstacle obstacle = new spike ( x,y, 20, 15);
+  Obstacle obstacle = new Spike ( x,y, 50, 30);
   world.obstacles.add(obstacle);
   obstacle.addVelocity(-2, 0);
-  obsticle.setImage("");
+  obstacle.setImage("SMjiINlngj.jpg");
 }
   }
   }
