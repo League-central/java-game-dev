@@ -3,6 +3,7 @@ PImage backgroundImage;
 static int windowWidth;
 static int windowHeight;
 boolean displayDebugColliders = false;
+static boolean gameOver = false;
 
 void setup() {
   size(800, 600);

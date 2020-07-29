@@ -26,9 +26,7 @@ public class World {
     }
     for (GameObject projectile : projectiles) {
       projectile.updateObject();
-      println(projectile.x + projectile.width);
           if (projectile.x + projectile.width <= 0){
-            println("new obstacle");
             
              //if it is, remove it
           
@@ -39,12 +37,8 @@ public class World {
         }
       
     }
-   if(checkCollisionWith(player,projectiles)){
-     player.lives--;
-     if(player.lives <= 0){
-       println("Game Over");
-     }
-   }
+   checkPlayerCollisionWithProjectiles();
+    
    purgeObjects();
   }
 
@@ -58,6 +52,10 @@ public class World {
     }
     for (GameObject projectile : projectiles) {
       projectile.draw();
+    }
+    if(Game.gameOver == true){
+      fill(0,0,0);
+      text("Game Over", 50, 50);
     }
   }
 
@@ -91,6 +89,26 @@ public class World {
       if (checkCollisionBetween(object, listObj)) {
         listObj.x = width;
         listObj.y = (int) random(height-player.height);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean checkPlayerCollisionWithProjectiles() {
+    for (GameObject listObj : projectiles) {
+      if (checkCollisionBetween(player, listObj)) {
+        listObj.x = width;
+        listObj.y = (int) random(height-player.height);
+        player.lives--;
+        println("lives " + player.lives);
+        if(player.lives <= 0){
+            projectiles.clear();
+            player.speedLimit = 0;
+            Game.gameOver = true;
+            player.setImage("sadCat.png");
+            println("Game Over");
+        }
         return true;
       }
     }
