@@ -3,24 +3,20 @@ PImage backgroundImage;
 static int windowWidth;
 static int windowHeight;
 boolean displayDebugColliders = false;
-static boolean gameOver = false;
 
 void setup() {
   size(800, 600);
   windowWidth = width;
   windowHeight = height;
-  backgroundImage = loadImage("world.jpeg");
-  backgroundImage.resize(width,height);
+  backgroundImage = null;
   world = new World();
-  
-  
 }
 
 void draw() {
   if (backgroundImage != null) {
     background(backgroundImage);
   } else {
-    background(66, 81, 234);
+    background(250, 250, 251);
   }
   world.draw();
   world.update();

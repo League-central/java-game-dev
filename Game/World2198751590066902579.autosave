@@ -12,8 +12,7 @@ public class World {
    projectiles.add( new Projectile(20, 400, 400, 30, new Vector(-5, 0)));
    projectiles.add( new Projectile(500, 350, 240, 30, new Vector(-5, 0)));
    projectiles.add( new Projectile(250, 200, 340, 30, new Vector(-5, 0)));
-  enemies.add(new Enemy (width, 10 , 20 , 20 ));
-  enemies.add(new Enemy (width, height-20, 20, 20));
+  projectiles.add( new Projectile(250, 200, 340, 30, new Vector(-5,0)));
   }
 
   void update() {
@@ -22,12 +21,14 @@ public class World {
       enemy.updateObject();
     }
     for (GameObject obstacle : obstacles) {
-
+      
       obstacle.updateObject();
     }
     for (GameObject projectile : projectiles) {
       projectile.updateObject();
+      println(projectile.x + projectile.width);
           if (projectile.x + projectile.width <= 0){
+            println("new obstacle");
             
              //if it is, remove it
           
@@ -38,8 +39,12 @@ public class World {
         }
       
     }
-   //checkPlayerCollisionWithProjectiles();
-    
+   if(checkCollisionWith(player,projectiles)){
+     player.lives--;
+     if(player.lives <= 0){
+       println("Game Over");
+     }
+   }
    purgeObjects();
   }
 
@@ -53,11 +58,6 @@ public class World {
     }
     for (GameObject projectile : projectiles) {
       projectile.draw();
-    }
-    if(Game.gameOver == true){
-      fill(0,0,0);
-     textSize(50);
-      text("Game Over", 50, 50);
     }
   }
 
@@ -89,32 +89,8 @@ public class World {
   public boolean checkCollisionWith(GameObject object, ArrayList<GameObject> list) {
     for (GameObject listObj : list) {
       if (checkCollisionBetween(object, listObj)) {
-     
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public GameObject getCollisionWith(GameObject object, ArrayList<GameObject> list) {
-    for (GameObject listObj : list) {
-      if (checkCollisionBetween(object, listObj)) {
-     
-        return listObj;
-      }
-    }
-    return null;
-  }
-  
-  public boolean checkPlayerCollisionWithProjectiles() {
-    for (GameObject listObj : projectiles) {
-      if (checkCollisionBetween(player, listObj)) {
         listObj.x = width;
         listObj.y = (int) random(height-player.height);
-        player.lives--;
-        println("lives " + player.lives);
-       
-        
         return true;
       }
     }

@@ -16,7 +16,13 @@ public class Player extends GameObject {
 
   void update() {
     move();
-  }
+ if(lives <= 0){
+            world.projectiles.clear();
+            speedLimit = 0;
+            Game.gameOver = true;
+            setImage("sadCat.png");
+ }
+}
 
   void move() {
     applyDrag();
@@ -64,7 +70,15 @@ public class Player extends GameObject {
 
   boolean willCollideAt(double x, double y) {
     GameObject check = new CollisionCheck(x, y, width, height);
-    if (world.checkCollisionWith(check, world.obstacles)) {
+    GameObject hit = world.getCollisionWith(check, world.obstacles);
+    if (hit != null) {
+       hit.x = width;
+        hit.y = (int) random(height-height);
+        
+        
+        
+        lives--;
+        println("lives " + lives);
       return true;
     }
     return false;
