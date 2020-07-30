@@ -73,6 +73,7 @@ public abstract class GameObject {
 
   void setImage(String imageName) {
     image = loadImage(imageName);
+
   }
 
   public boolean hasGoneOffScreen() {

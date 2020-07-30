@@ -9,16 +9,25 @@ public class World {
 
     player = new Player(190, 100, 100, 100);
         player.setImage("tank.png");
-        player.setImage("pea.jpeg");
+       
     obstacles.add(new Obstacle(20, 400, 400, 30));
     
     
       Enemy bot = new  Enemy(300,300,50,50);
-      bot.setImage("pea.jpeg");
+         bot.setImage("pea.jpeg");        
       enemies.add(bot);
-       Enemy spike = new  Enemy(100,20,50,50);
+       Enemy spike = new  Enemy(400,330,50,50);
      spike.setImage("saw.png");
       enemies.add(spike);
+      Enemy zombie = new Enemy(300, 300, 50, 50);
+      zombie.setImage("zombie.jpeg");
+      enemies.add(zombie);
+      Enemy garg = new Enemy(300, 300, 50, 50);
+      garg.setImage("grsg.jpeg");
+      enemies.add(garg);
+      Enemy cone = new Enemy(300, 300, 50, 50);
+      cone.setImage("cone.jpeg");
+      enemies.add(cone);
   }
 
   void update() {
@@ -31,8 +40,12 @@ public class World {
     }
     for (GameObject projectile : projectiles) {
       projectile.updateObject();
+      checkCollisionWith(projectile, enemies);
 
     }
+    
+    
+    
     purgeObjects();
   }
 

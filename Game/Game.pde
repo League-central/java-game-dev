@@ -43,7 +43,12 @@ void keyPressed() {
   // P key
   if (keyCode == 80) {
     displayDebugColliders = !displayDebugColliders;
+    
   }
+if (keyCode == 32){
+  world.projectiles.add(new Projectile(world.player.x + world.player.width, world.player.y + 23, 20, 10, new Vector(20,0)));
+      
+}
 }
 
 void keyReleased() {

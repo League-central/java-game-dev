@@ -3,6 +3,7 @@ public class Projectile extends GameObject {
     super(x, y, width, height);
     type = "Projectile";
     this.velocity = velocity;
+    isAffectedByGravity = false;
   }
 
   void update() {
