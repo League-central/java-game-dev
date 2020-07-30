@@ -71,9 +71,11 @@ public class Player extends GameObject {
   boolean willCollideAt(double x, double y) {
     GameObject check = new CollisionCheck(x, y, width, height);
     GameObject hit = world.getCollisionWith(check, world.obstacles);
+    GameObject hit2 = world.getCollisionWith(check, world.projectiles);
+    GameObject hit3 = world.getCollisionWith(check, world.foods);
     if (hit != null) {
-       hit.x = width;
-        hit.y = (int) random(height-height);
+       hit.x = windowWidth;
+        hit.y = (int) random(height-windowHeight);
         
         
         
@@ -81,6 +83,24 @@ public class Player extends GameObject {
         println("lives " + lives);
       return true;
     }
+      if (hit2 != null) {
+       hit2.x = windowWidth;
+        hit2.y = (int) random(height-windowHeight);
+      
+       
+         
+          
+        
+        
+        lives--;
+        println("lives " + lives);
+      return true;
+    }
+     if (hit3 !=null){
+       hit3.x = windowWidth;
+       hit3.y = (int) random(height-windowHeight);
+     lives++;
+   }
     return false;
   }
 

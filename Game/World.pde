@@ -4,7 +4,7 @@ public class World {
   ArrayList<GameObject> enemies = new ArrayList<GameObject>(); 
   ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
   ArrayList<GameObject> projectiles = new ArrayList<GameObject>();
-
+  ArrayList<GameObject> foods = new ArrayList<GameObject>();
   World() {
     player = new Player(50, 50, 100, 100);
     player.setImage("cat.png");
@@ -14,6 +14,7 @@ public class World {
    projectiles.add( new Projectile(250, 200, 340, 30, new Vector(-5, 0)));
   enemies.add(new Enemy (width, 10 , 20 , 20 ));
   enemies.add(new Enemy (width, height-20, 20, 20));
+  foods.add(new Food (250, 250, 30, 20));
   }
 
   void update() {
@@ -21,14 +22,17 @@ public class World {
     for (GameObject enemy : enemies) {
       enemy.updateObject();
     }
+    for (GameObject food : foods){
+    food.updateObject();
+    }
     for (GameObject obstacle : obstacles) {
 
       obstacle.updateObject();
     }
     for (GameObject projectile : projectiles) {
-      projectile.updateObject();
-          if (projectile.x + projectile.width <= 0){
-            
+      projectile.updateObject();  
+      if (projectile.x + projectile.width <= 0){
+          
              //if it is, remove it
           
               //create a new one 
@@ -48,18 +52,29 @@ public class World {
     for (GameObject enemy : enemies) {
       enemy.draw();
     }
+    for (GameObject food : foods){
+    food.draw();
+    }
     for (GameObject obstacle : obstacles) {
       obstacle.draw();
     }
     for (GameObject projectile : projectiles) {
       projectile.draw();
     }
+   
     if(Game.gameOver == true){
       fill(0,0,0);
      textSize(50);
       text("Game Over", 50, 50);
     }
-  }
+ else {
+   textSize(50);
+    text(player.lives, 50, 50); 
+  
+ }
+
+}
+  
 
   void purgeObjects() {
     for (int i = enemies.size()-1; i >= 0; i--) {
