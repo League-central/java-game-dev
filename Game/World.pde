@@ -1,14 +1,15 @@
 public class World {
   Player player;
-  double gravity = 0.2;
+  double gravity = 0.3;
   ArrayList<GameObject> enemies = new ArrayList<GameObject>(); 
   ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
   ArrayList<GameObject> projectiles = new ArrayList<GameObject>();
 
 
   World() {
-    player = new Player(50, 50, 20, 20);
+    player = new Player(50, 50, 50, 50);
     obstacles.add(new Obstacle(20, 400, 400, 30));
+    enemies.add(new Enemy(400,350,100,30));
   }
 
   void update() {
@@ -80,15 +81,6 @@ public class World {
     }
 
     return false;
-  }
-  
-  public GameObject getCollisionWith(GameObject object, ArrayList<GameObject> list) {
-    for (GameObject listObj : list) {
-      if (checkCollisionBetween(object, listObj)) {
-        return listObj;
-      }
-    }
-    return null;
   }
 
   Vector calculateVector(GameObject from, GameObject to) {

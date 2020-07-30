@@ -2,7 +2,7 @@ public abstract class GameObject {
   PImage image;
   Vector velocity;
   String type;
-  color objColor = color(0, 0, 500);
+  color objColor = color(200, 0, 0);
   double x;
   double y;
   double drag = 0.2;
@@ -71,8 +71,8 @@ public abstract class GameObject {
     objColor = color(r, g, b);
   }
 
-  void setImage(String SetImage) {
-    image = loadImage(SetImage);
+  void setImage(String imageName) {
+    image = loadImage(imageName);
     image.resize(width, height);
   }
 

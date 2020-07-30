@@ -8,9 +8,11 @@ void setup() {
   size(800, 600);
   windowWidth = width;
   windowHeight = height;
-  backgroundImage = loadImage("landscape.png");
-  backgroundImage.resize(width, height);
+
+  backgroundImage =loadImage ("mario.jpg");
+  backgroundImage.resize(width,height);
   world = new World();
+   
 }
 
 void draw() {

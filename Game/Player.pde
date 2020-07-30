@@ -1,6 +1,6 @@
 public class Player extends GameObject {
   double speedLimit = 8;
-  double jumpStrength = 5;
+  double jumpStrength = 8;
   boolean left = false;
   boolean right = false;
   boolean up = false;
@@ -11,6 +11,8 @@ public class Player extends GameObject {
     type = "Player";
     isAffectedByGravity = true;
     isAffectedByDrag = true;
+    image=loadImage("mario.png");
+    image.resize(width,height);
   }
 
   void update() {
@@ -63,11 +65,7 @@ public class Player extends GameObject {
 
   boolean willCollideAt(double x, double y) {
     GameObject check = new CollisionCheck(x, y, width, height);
-    GameObject hit = world.getCollisionWith(check, world.obstacles);
-    if (hit != null) {
-      if(hit.type.equals("Enemy")){
-        
-      }
+    if (world.checkCollisionWith(check, world.obstacles)) {
       return true;
     }
     return false;
