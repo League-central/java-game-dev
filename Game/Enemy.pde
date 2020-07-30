@@ -6,6 +6,9 @@ public class Enemy extends GameObject {
   }
 
   void update() {
+    if(frameCount % 30 == 0){
+      world.obstacles.add(new Obstacle(x, y, 400, 30));
+    }
   }
 
   void collidedWith(GameObject other) {

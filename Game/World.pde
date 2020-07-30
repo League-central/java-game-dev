@@ -9,6 +9,7 @@ public class World {
   World() {
     player = new Player(50, 50, 20, 20);
     obstacles.add(new Obstacle(20, 400, 400, 30));
+    enemies.add(new Enemy(300, 100, 40, 40));
   }
 
   void update() {
@@ -71,6 +72,15 @@ public class World {
     }
     return false;
   }
+  
+  public GameObject getCollisionWith(GameObject object, ArrayList<GameObject> list) {
+    for (GameObject listObj : list) {
+      if (checkCollisionBetween(object, listObj)) {
+        return listObj;
+      }
+    }
+    return null;
+  }
 
   public boolean checkCollisionBetween(GameObject a, GameObject b) {
     if (a.x + a.width >= b.x && a.x <= b.x + b.width && a.y + a.height >= b.y && a.y < b.y + b.height) {
@@ -80,15 +90,6 @@ public class World {
     }
 
     return false;
-  }
-  
-  public GameObject getCollisionWith(GameObject object, ArrayList<GameObject> list) {
-    for (GameObject listObj : list) {
-      if (checkCollisionBetween(object, listObj)) {
-        return listObj;
-      }
-    }
-    return null;
   }
 
   Vector calculateVector(GameObject from, GameObject to) {
