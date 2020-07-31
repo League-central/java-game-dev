@@ -4,18 +4,22 @@ static int windowWidth;
 static int windowHeight;
 boolean displayDebugColliders = false;
 static boolean gameOver = false;
-
+ PImage heartImage;
+ 
+  
 void setup() {
   size(800, 600);
   windowWidth = width;
   windowHeight = height;
   backgroundImage = loadImage("world.jpeg");
   backgroundImage.resize(width,height);
+  heartImage = loadImage("heart.png");
+  heartImage.resize(15,15);
   world = new World();
-  
-  
-}
 
+ 
+}
+;
 void draw() {
   if (backgroundImage != null) {
     background(backgroundImage);
@@ -24,6 +28,11 @@ void draw() {
   }
   world.draw();
   world.update();
+
+
+for(int i=0; i < world.player.lives; i++){
+ image(heartImage, i*17, 7);
+}
 }
 
 void keyPressed() {
@@ -67,4 +76,5 @@ void keyReleased() {
   if (keyCode == 65) {
     world.player.left = false;
   }
+
 }
