@@ -81,7 +81,16 @@ enemies.add(enemy);
     }
     return false;
   }
-
+  public GameObject getCollisionWith(GameObject object, ArrayList<GameObject> list) {
+    for (GameObject listObj : list) {
+      if (checkCollisionBetween(object, listObj)) {
+        return listObj;
+      }
+    }
+    return null;
+  }
+  
+  
   public boolean checkCollisionBetween(GameObject a, GameObject b) {
     if (a.x + a.width >= b.x && a.x <= b.x + b.width && a.y + a.height >= b.y && a.y < b.y + b.height) {
       a.collidedWith(b);

@@ -17,7 +17,6 @@ else{
   Obstacle obstacle = new Spike ( x,y, 50, 30);
   world.obstacles.add(obstacle);
   obstacle.addVelocity(-2, 0);
-  obstacle.setImage("SMjiINlngj.jpg");
 }
   }
   }

@@ -63,6 +63,16 @@ public class Player extends GameObject {
 
   boolean willCollideAt(double x, double y) {
     GameObject check = new CollisionCheck(x, y, width, height);
+   GameObject hit = world.getCollisionWith(check, world.obstacles);
+    if(hit != null){
+     println(":"+hit.type+":");
+      if(hit.type.contains("Spike")){
+     this.x = 5000000; 
+     this.y = 1500000;
+  println("234yjkhjytr42w1qw2nyhgmu4w3q");
+  }
+    }
+    
     if (world.checkCollisionWith(check, world.obstacles)) {
       return true;
     }
@@ -70,5 +80,6 @@ public class Player extends GameObject {
   }
 
   void collidedWith(GameObject other) {
+ 
   }
 }
