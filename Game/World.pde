@@ -9,7 +9,8 @@ public class World {
   World() {
     player = new Player(50, 50, 50, 50);
     obstacles.add(new Obstacle(20, 400, 400, 30));
-    enemies.add(new Enemy(400,350,100,30));
+    enemies.add(new Enemy(400,335,100,30));
+        
   }
 
   void update() {

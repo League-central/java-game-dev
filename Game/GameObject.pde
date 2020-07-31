@@ -74,7 +74,7 @@ public abstract class GameObject {
   void setImage(String SetImage) {
     image = loadImage(SetImage);
     image.resize(width, height);
-  }
+  } 
 
   public boolean hasGoneOffScreen() {
     if (x > Game.windowWidth || x + this.width < 0 || y > Game.windowHeight || y + this.height < 0) {
