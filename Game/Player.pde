@@ -1,6 +1,6 @@
 public class Player extends GameObject {
   double speedLimit = 8;
-  double jumpStrength = 5;
+  double jumpStrength = 12;
   boolean left = false;
   boolean right = false;
   boolean up = false;
@@ -11,6 +11,8 @@ public class Player extends GameObject {
     type = "Player";
     isAffectedByGravity = true;
     isAffectedByDrag = true;
+    image = loadImage("hi.png");
+    image.resize(width, height);
   }
 
   void update() {
@@ -66,8 +68,7 @@ public class Player extends GameObject {
     GameObject hit = world.getCollisionWith(check, world.obstacles);
     if (hit != null) {
       if(hit.type.equals("Enemy")){
-        x = 20;
-        y = 20;
+        
       }
       return true;
     }

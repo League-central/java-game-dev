@@ -2,7 +2,7 @@ public abstract class GameObject {
   PImage image;
   Vector velocity;
   String type;
-  color objColor = color(100, 0, 0);
+  color objColor = color(0, 0, 10);
   double x;
   double y;
   double drag = 0.2;
@@ -33,13 +33,13 @@ public abstract class GameObject {
     if (image != null) {
       image(image, (int)x, (int)y);
     } else {
-      stroke(0, 0, 0);
+      stroke(0,0, 0);
       fill(objColor);
       rect((int)x, (int)y, width, height);
     }
 
     if (displayDebugColliders) {
-      stroke(255, 0, 0);
+      stroke(255, 255, 0);
       noFill();
       rect((int)x, (int)y, width, height);
     }
@@ -71,8 +71,8 @@ public abstract class GameObject {
     objColor = color(r, g, b);
   }
 
-  void setImage(String imageName) {
-    image = loadImage(imageName);
+  void setImage(String png) {
+    image = loadImage(png);
     image.resize(width, height);
   }
 
