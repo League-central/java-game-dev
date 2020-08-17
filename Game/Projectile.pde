@@ -11,5 +11,6 @@ public class Projectile extends GameObject {
   }
 
   void collidedWith(GameObject other) {
+    
   }
 }

@@ -14,6 +14,10 @@ public class Player extends GameObject {
   }
 
   void update() {
+    if(hasGoneOffScreen()){
+     x=50;
+     y=50;
+    }
     move();
   }
 
