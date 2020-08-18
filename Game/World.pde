@@ -5,11 +5,18 @@ public class World {
   ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
   ArrayList<GameObject> projectiles = new ArrayList<GameObject>();
 
-
   World() {
+<<<<<<< Updated upstream
     player = new Player(50, 50, 20, 20);
     obstacles.add(new Obstacle(20, 400, 400, 30));
     enemies.add(new Enemy(300, 100, 40, 40));
+=======
+    player = new Player(100, 360, 20, 20);
+    obstacles.add(new Obstacle(0, 400, 400, 30));
+    obstacles.add(new Obstacle(600, 400, 200, 30));
+    obstacles.add(new Obstacle(1000, 400, 100, 30));
+    //enemies.add(new Enemy(300, 100, 40, 40));
+>>>>>>> Stashed changes
   }
 
   void update() {

@@ -1,6 +1,11 @@
 public class Player extends GameObject {
+<<<<<<< Updated upstream
   double speedLimit = 8;
   double jumpStrength = 5;
+=======
+  double speedLimit = 6;
+  double jumpStrength = 6;
+>>>>>>> Stashed changes
   boolean left = false;
   boolean right = false;
   boolean up = false;
