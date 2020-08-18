@@ -5,8 +5,6 @@ public abstract class GameObject {
   color objColor = color(100, 0, 0);
   double x;
   double y;
-  double drawX;
-  double drawY;
   double drag = 0.2;
   boolean isActive = true;
   boolean isAffectedByGravity = true;
@@ -33,27 +31,26 @@ public abstract class GameObject {
 
   void draw() {
     if (image != null) {
-      image(image, (int)drawX, (int)drawY);
+      image(image, (int)x, (int)y);
     } else {
       stroke(0, 0, 0);
       fill(objColor);
-      rect((int)drawX, (int)drawY, width, height);
+      rect((int)x, (int)y, width, height);
     }
 
     if (displayDebugColliders) {
       stroke(255, 0, 0);
       noFill();
-      rect((int)drawX, (int)drawY, width, height);
+      rect((int)x, (int)y, width, height);
     }
   }
 
   void updateObject() {
-    if (!type.equalsIgnoreCase("player")){
-    drawX = x - dx;
-    drawY = y - dy;
-    }
     applyGravity();
     update();
+    if (hasGoneOffScreen()) {
+      isActive = false;
+    }
   }
 
   void applyGravity() {

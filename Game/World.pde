@@ -7,18 +7,16 @@ public class World {
 
 
   World() {
-    player = new Player(100, 360, 20, 20);
-    obstacles.add(new Obstacle(0, 400, 400, 30));
-    obstacles.add(new Obstacle(600, 400, 200, 30));
-    //enemies.add(new Enemy(300, 100, 40, 40));
+    player = new Player(50, 50, 20, 20);
+    obstacles.add(new Obstacle(20, 400, 400, 30));
+    enemies.add(new Enemy(300, 100, 40, 40));
   }
 
   void update() {
- player.updateObject();
+    player.updateObject();
     for (GameObject enemy : enemies) {
       enemy.updateObject();
     }
-
     for (GameObject obstacle : obstacles) {
       obstacle.updateObject();
     }
@@ -30,10 +28,9 @@ public class World {
 
   void draw() {
     player.draw();
-  for (GameObject enemy : enemies) {
+    for (GameObject enemy : enemies) {
       enemy.draw();
     }
-  
     for (GameObject obstacle : obstacles) {
       obstacle.draw();
     }
@@ -43,12 +40,11 @@ public class World {
   }
 
   void purgeObjects() {
-   for (int i = enemies.size()-1; i >= 0; i--) {
+    for (int i = enemies.size()-1; i >= 0; i--) {
       if (enemies.get(i).isActive == false) {
         enemies.remove(i);
       }
     }
- 
     for (int i = obstacles.size()-1; i >= 0; i--) {
       if (obstacles.get(i).isActive == false) {
         obstacles.remove(i);
