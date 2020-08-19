@@ -62,12 +62,12 @@ public class Player extends GameObject {
   }
 
   boolean willCollideAt(double x, double y) {
-    GameObject check = new CollisionCheck(x, y, width, height);
+    GameObject check = new CollisionCheck(x, y, width, height, type);
     GameObject hit = world.getCollisionWith(check, world.obstacles);
     if (hit != null) {
       if(hit.type.equals("Enemy")){
-        x = 20;
-        y = 20;
+        this.x = 20;
+        this.y = 20;
       }
       return true;
     }
