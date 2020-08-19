@@ -3,6 +3,8 @@ public abstract class GameObject {
   Vector velocity;
   String type;
   color objColor = color(100, 0, 0);
+  double drawX;
+  double drawY;
   double x;
   double y;
   double drag = 0.2;
@@ -31,26 +33,27 @@ public abstract class GameObject {
 
   void draw() {
     if (image != null) {
-      image(image, (int)x, (int)y);
+      image(image, (int)drawX, (int)drawY);
     } else {
       stroke(0, 0, 0);
       fill(objColor);
-      rect((int)x, (int)y, width, height);
+      rect((int)drawX, (int)drawY, width, height);
     }
 
     if (displayDebugColliders) {
       stroke(255, 0, 0);
       noFill();
-      rect((int)x, (int)y, width, height);
+      rect((int)drawX, (int)drawY, width, height);
     }
   }
 
   void updateObject() {
+    if(!type.equalsIgnoreCase("player")){
+    drawX = x - dx;
+    drawY = y - dy;
+    }
     applyGravity();
     update();
-    if (hasGoneOffScreen()) {
-      isActive = false;
-    }
   }
 
   void applyGravity() {

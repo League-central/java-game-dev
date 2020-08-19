@@ -1,43 +1,36 @@
 World world;
-<<<<<<< Updated upstream
-=======
 double dx = 0;
 double dy = 0;
 double parallaxX = 0;
 double parallaxY = 0;
->>>>>>> Stashed changes
 PImage backgroundImage;
 static int windowWidth;
 static int windowHeight;
 boolean displayDebugColliders = false;
 
 void setup() {
-  size(800, 600);
+  size(1200, 600);
   windowWidth = width;
   windowHeight = height;
-<<<<<<< Updated upstream
-  backgroundImage = loadImage("landscape.png");
-=======
 
   backgroundImage = loadImage("background5.png");
->>>>>>> Stashed changes
-  backgroundImage.resize(width, height);
+  backgroundImage.resize(windowWidth, windowHeight);
   world = new World();
 }
 
 void draw() {
-  parallaxX = -((dx/6) % 800);
-  parallaxY = -((dy/6) % 600);
+  parallaxX = -((dx/8) % 800);
+  parallaxY = -((dy/8) % 600);
   if (backgroundImage != null) {
     image(backgroundImage, (int)parallaxX, (int)parallaxY);
-    image(backgroundImage, (int)parallaxX + 800, (int)parallaxY + 600);
-    image(backgroundImage, (int)parallaxX + 800, (int)parallaxY - 600);
-    image(backgroundImage, (int)parallaxX - 800, (int)parallaxY + 600);
-    image(backgroundImage, (int)parallaxX, (int)parallaxY - 600);
-    image(backgroundImage, (int)parallaxX, (int)parallaxY + 600);
-    image(backgroundImage, (int)parallaxX - 800, (int)parallaxY);
-    image(backgroundImage, (int)parallaxX + 800, (int)parallaxY);
-    image(backgroundImage, (int)parallaxX - 800, (int)parallaxY - 600);
+    image(backgroundImage, (int)parallaxX + width, (int)parallaxY + height);
+    image(backgroundImage, (int)parallaxX + width, (int)parallaxY - height);
+    image(backgroundImage, (int)parallaxX - width, (int)parallaxY + height);
+    image(backgroundImage, (int)parallaxX, (int)parallaxY - height);
+    image(backgroundImage, (int)parallaxX, (int)parallaxY + height);
+    image(backgroundImage, (int)parallaxX - width, (int)parallaxY);
+    image(backgroundImage, (int)parallaxX + width, (int)parallaxY);
+    image(backgroundImage, (int)parallaxX - width, (int)parallaxY - height);
   } else {
     background(255, 255, 255);
   }
@@ -46,7 +39,7 @@ void draw() {
 }
 
 void keyPressed() {
-  println(keyCode);
+  //println(keyCode);
   // W Key
   if (keyCode == 87) {
     world.player.up = true;
@@ -66,6 +59,10 @@ void keyPressed() {
   // P key
   if (keyCode == 80) {
     displayDebugColliders = !displayDebugColliders;
+  }
+   if (keyCode == 90) {
+    world.player.speedLimit = 20;
+    world.player.jumpStrength = 20;
   }
 }
 

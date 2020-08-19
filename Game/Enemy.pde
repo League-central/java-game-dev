@@ -6,7 +6,7 @@ public class Enemy extends GameObject {
   }
 
   void update() {
-    if(frameCount % 30 == 0){
+    if(frameCount % 40 == 0){
       Obstacle o = new Obstacle(x, y, 40, 30);
       world.obstacles.add(o);
       o.setVelocity(2,0);

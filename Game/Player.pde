@@ -1,11 +1,6 @@
 public class Player extends GameObject {
-<<<<<<< Updated upstream
-  double speedLimit = 8;
-  double jumpStrength = 5;
-=======
   double speedLimit = 6;
   double jumpStrength = 6;
->>>>>>> Stashed changes
   boolean left = false;
   boolean right = false;
   boolean up = false;
@@ -16,9 +11,21 @@ public class Player extends GameObject {
     type = "Player";
     isAffectedByGravity = true;
     isAffectedByDrag = true;
+    drawX = x;
+    drawY = y;
   }
 
   void update() {
+    if(y > 542){
+    exit();
+    }
+    if(x >= 1400){
+    jumpStrength = 9;
+    speedLimit = 9;
+    }
+    dx = x - drawX;
+    dy = y - drawY;
+    
     move();
   }
 
@@ -67,7 +74,7 @@ public class Player extends GameObject {
   }
 
   boolean willCollideAt(double x, double y) {
-    GameObject check = new CollisionCheck(x, y, width, height);
+    GameObject check = new CollisionCheck(x, y, width, height,type);
     GameObject hit = world.getCollisionWith(check, world.obstacles);
     if (hit != null) {
       if(hit.type.equals("Enemy")){
