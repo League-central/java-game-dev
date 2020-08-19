@@ -1,6 +1,6 @@
 public class Player extends GameObject {
-  double speedLimit = 8;
-  double jumpStrength = 5;
+  double speedLimit = 5;
+  double jumpStrength = 8;
   boolean left = false;
   boolean right = false;
   boolean up = false;
@@ -68,6 +68,8 @@ public class Player extends GameObject {
   boolean willCollideAt(double x, double y) {
     GameObject check = new CollisionCheck(x, y, width, height);
     GameObject hit = world.getCollisionWith(check, world.obstacles);
+     GameObject hit2 = world.getCollisionWith(check, world.projectiles);
+     boolean hit3 = world.checkCollisionBetween(check, world.checkpoint);
     if (hit != null) {
       if(hit.type.equals("Enemy")){
         x = 20;
@@ -75,9 +77,23 @@ public class Player extends GameObject {
       }
       return true;
     }
+    if(hit2 !=null){
+     
+      if(hit2.type.equals("Projectile")){
+        this.x=20;
+        this.y=20;
+      
+      }
+      
+    }
+    if(hit3==true){
+      world.createlevel2();
+    }
     return false;
   }
 
   void collidedWith(GameObject other) {
+    
+      
   }
 }

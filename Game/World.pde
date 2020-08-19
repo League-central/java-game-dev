@@ -1,5 +1,6 @@
 public class World {
   Player player;
+  Checkpoint checkpoint;
   double gravity = 0.2;
   ArrayList<GameObject> enemies = new ArrayList<GameObject>(); 
   ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
@@ -8,12 +9,25 @@ public class World {
 
   World() {
     player = new Player(50, 50, 20, 20);
+    checkpoint= new Checkpoint(500,50,40,80);
+    checkpoint.objColor=color(0,100,255);
     obstacles.add(new Obstacle(20, 400, 400, 30));
-    enemies.add(new Enemy(300, 100, 40, 40));
+    enemies.add(new Enemy(250, 100, 40, 40));
+    obstacles.add(new Obstacle(500, 250, 100, 30));
     
   }
-
+void createlevel2(){
+  enemies.clear();
+  obstacles.clear();
+  projectiles.clear();
+  player = new Player(50, 50, 20, 20);
+  checkpoint= new Checkpoint(200,50,40,80);
+    checkpoint.objColor=color(0,100,255);
+    obstacles.add(new Obstacle(20, 400, 400, 30));
+    enemies.add(new Enemy(500, 200, 40, 40));
+}
   void update() {
+    checkpoint.updateObject();
     player.updateObject();
     for (GameObject enemy : enemies) {
       enemy.updateObject();
@@ -25,9 +39,11 @@ public class World {
       projectile.updateObject();
     }
     purgeObjects();
+    
   }
 
   void draw() {
+    checkpoint.draw();
     player.draw();
     for (GameObject enemy : enemies) {
       enemy.draw();

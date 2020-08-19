@@ -6,10 +6,10 @@ public class Enemy extends GameObject {
   }
 
   void update() {
-    if(frameCount % 60 == 0){
-      Obstacle o = new Obstacle(x, y, 40, 30);
-      world.obstacles.add(o);
-      o.setVelocity(0,2);
+    if(frameCount % 40 == 0){
+      Projectile o = new Projectile(x, y, 40, 30,new Vector(0,2));
+      world.projectiles.add(o);
+      
     }
   }
 
