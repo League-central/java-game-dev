@@ -16,7 +16,7 @@ public class Player extends GameObject {
   void update() {
     if(hasGoneOffScreen()){
      x=50;
-     y=50;
+     y=20;
     }
     move();
   }
@@ -87,7 +87,7 @@ public class Player extends GameObject {
       
     }
     if(hit3==true){
-      world.createlevel2();
+      world.createnextlevel();
     }
     return false;
   }

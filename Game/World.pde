@@ -5,10 +5,11 @@ public class World {
   ArrayList<GameObject> enemies = new ArrayList<GameObject>(); 
   ArrayList<GameObject> obstacles = new ArrayList<GameObject>();
   ArrayList<GameObject> projectiles = new ArrayList<GameObject>();
+  int level=1;
 
 
   World() {
-    player = new Player(50, 50, 20, 20);
+    player = new Player(50, 200, 20, 20);
     checkpoint= new Checkpoint(500,50,40,80);
     checkpoint.objColor=color(0,100,255);
     obstacles.add(new Obstacle(20, 400, 400, 30));
@@ -17,15 +18,30 @@ public class World {
     
   }
 void createlevel2(){
-  enemies.clear();
-  obstacles.clear();
-  projectiles.clear();
-  player = new Player(50, 50, 20, 20);
-  checkpoint= new Checkpoint(200,50,40,80);
+  player = new Player(50, 10, 20, 20);
+  checkpoint= new Checkpoint(650,280,40,80);
     checkpoint.objColor=color(0,100,255);
     obstacles.add(new Obstacle(20, 400, 400, 30));
-    enemies.add(new Enemy(500, 200, 40, 40));
+    enemies.add(new Enemy(500, 50, 40, 40));
+    obstacles.add(new Obstacle(420, 300, 50, 30));
 }
+void createnextlevel(){
+   enemies.clear();
+  obstacles.clear();
+  projectiles.clear();
+  level+=1;
+  if(level==2){
+    createlevel2();
+  }
+  if(level==3){
+    createlevel3();
+    
+  }
+}
+    void createlevel3(){
+       obstacles.add(new Obstacle(20, 400, 400, 30));
+    }
+
   void update() {
     checkpoint.updateObject();
     player.updateObject();
