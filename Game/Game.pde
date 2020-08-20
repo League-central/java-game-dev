@@ -10,7 +10,7 @@ boolean displayDebugColliders = false;
 boolean jumpCheatActivated = false;
 
 void setup() {
-  size(1600, 600);
+  size(1600, 800);
   windowWidth = width;
   windowHeight = height;
 
@@ -22,7 +22,7 @@ void setup() {
 void draw() {
   parallaxX = -((dx/8) % 800);
   parallaxY = -((dy/8) % 600);
-  if (backgroundImage != null) {//wwwwwwwwwwwwwwwwwwww
+  if (backgroundImage != null) {//
     image(backgroundImage, (int)parallaxX, (int)parallaxY);
     image(backgroundImage, (int)parallaxX + width, (int)parallaxY + height);
     image(backgroundImage, (int)parallaxX + width, (int)parallaxY - height);
@@ -61,7 +61,7 @@ void keyPressed() {
   if (keyCode == 80) {
     displayDebugColliders = !displayDebugColliders;
   }
-   if (keyCode == 90) {
+  if (keyCode == 90) {
     world.player.speedLimit = 11;
     world.player.jumpStrength = 11;
     jumpCheatActivated = true;
