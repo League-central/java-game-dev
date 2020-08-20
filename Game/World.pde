@@ -13,17 +13,24 @@ public class World {
      obstacles.add(new Obstacle(1400, 400, 200, 30));
      obstacles.add(new Obstacle(1800, 200, 200, 30));
      obstacles.add(new Obstacle(2000, 0, 100, 30));
-     obstacles.add(new Button(2000, -200, 40, 30));//w
+     obstacles.add(new Button(2000, -200, 40, 30,new Obstacle(2200, 0, 200, 30),(2 * 1000)));
+     obstacles.add(new Obstacle(3200, 0, 80, 30));
+     obstacles.add(new Obstacle(2300,-10000 - 200, 80, 10000));
     //enemies.add(new Enemy(300, 100, 40, 40));
-  }//
-
+  }//wwwww
+void addObstacle(GameObject go){
+obstacles.add(go);
+}
+void removeObstacle(GameObject go){
+obstacles.remove(go);
+}
   void update() {
     player.updateObject();
     for (GameObject enemy : enemies) {
       enemy.updateObject();
     }
-    for (GameObject obstacle : obstacles) {
-      obstacle.updateObject();
+    for (int i = 0; i < obstacles.size(); i++) {
+      obstacles.get(i).updateObject();
     }
     for (GameObject projectile : projectiles) {
       projectile.updateObject();

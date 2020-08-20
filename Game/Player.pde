@@ -6,6 +6,9 @@ public class Player extends GameObject {
   boolean up = false;
   boolean down = false;
   boolean canJump = true;
+  int maxJumps = 2;
+  int jumpCount = maxJumps;
+  int jumpTime = 0;
   Player(double x, double y, int width, int height) {
     super(x, y, width, height);
     type = "Player";
@@ -16,16 +19,16 @@ public class Player extends GameObject {
   }
 
   void update() {
-    if(y > 542){
-    exit();
+    if (y > 542) {
+      exit();
     }
-    if(x >= 1400){
-    jumpStrength = 9;
-    speedLimit = 9;
+    if (x >= 1400 && !jumpCheatActivated) {
+      jumpStrength = 9;
+      speedLimit = 9;
     }
     dx = x - drawX;
     dy = y - drawY;
-    
+
     move();
   }
 
@@ -33,9 +36,11 @@ public class Player extends GameObject {
     applyDrag();
     if (up && !isAffectedByGravity) {
       addVelocity(0, -1);
-    } else if (up && canJump) {
+    } else if (up && canJump && jumpCount > 0 && millis() > jumpTime + 200) {
       setVelocity(velocity.x, -jumpStrength);
-      canJump = false;
+      //canJump = false;
+      jumpCount--;
+      jumpTime = millis();
     }
     if (down) {
       addVelocity(0, 1);
@@ -74,10 +79,11 @@ public class Player extends GameObject {
   }
 
   boolean willCollideAt(double x, double y) {
-    GameObject check = new CollisionCheck(x, y, width, height,type);
+    GameObject check = new CollisionCheck(x, y, width, height, type);
     GameObject hit = world.getCollisionWith(check, world.obstacles);
     if (hit != null) {
-      if(hit.type.equals("Enemy")){
+      jumpCount = maxJumps;
+      if (hit.type.equals("Enemy")) {
         x = 20;
         y = 20;
       }
