@@ -1,10 +1,10 @@
-public class Checkpoint extends GameObject {
+public class Ending extends Obstacle {
 
-  Checkpoint(double x, double y, int width, int height) {
+  Ending(double x, double y, int width, int height) {
     super(x, y, width, height);
-    type = "Checkpoint";
+    type = "Ending";
     isAffectedByGravity = false;
-    objColor=color(0,100,255);
+    objColor=color(0,100,100);
   }
 
   void update() {

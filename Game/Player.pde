@@ -71,9 +71,15 @@ public class Player extends GameObject {
      GameObject hit2 = world.getCollisionWith(check, world.projectiles);
      boolean hit3 = world.checkCollisionBetween(check, world.checkpoint);
     if (hit != null) {
-      if(hit.type.equals("Enemy")){
-        x = 20;
-        y = 20;
+      if(hit.type.equals("Button")){
+        world.enemies.clear();
+        world.enemies.add(new Enemy (500,10,50,50));
+        world.enemies.add(new Enemy (400,10,50,50));
+         world.enemies.add(new Enemy (300,10,50,50));
+          world.enemies.add(new Enemy (620,10,50,50));
+      }
+      if(hit.type.equals("Ending")){
+        isEnd=true;
       }
       return true;
     }

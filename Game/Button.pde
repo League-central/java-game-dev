@@ -1,11 +1,12 @@
-public class Checkpoint extends GameObject {
+public class Button extends Obstacle {
 
-  Checkpoint(double x, double y, int width, int height) {
+  Button(double x, double y, int width, int height) {
     super(x, y, width, height);
-    type = "Checkpoint";
+    type = "Button";
     isAffectedByGravity = false;
-    objColor=color(0,100,255);
+    objColor=color(0,255,0);
   }
+ 
 
   void update() {
     x += velocity.x;

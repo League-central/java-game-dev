@@ -11,16 +11,15 @@ public class World {
   World() {
     player = new Player(50, 200, 20, 20);
     checkpoint= new Checkpoint(500,50,40,80);
-    checkpoint.objColor=color(0,100,255);
     obstacles.add(new Obstacle(20, 400, 400, 30));
     enemies.add(new Enemy(250, 100, 40, 40));
     obstacles.add(new Obstacle(500, 250, 100, 30));
+   
     
   }
 void createlevel2(){
   player = new Player(50, 10, 20, 20);
   checkpoint= new Checkpoint(650,280,40,80);
-    checkpoint.objColor=color(0,100,255);
     obstacles.add(new Obstacle(20, 400, 400, 30));
     enemies.add(new Enemy(500, 50, 40, 40));
     obstacles.add(new Obstacle(420, 300, 50, 30));
@@ -37,11 +36,39 @@ void createnextlevel(){
     createlevel3();
     
   }
+  if(level==4){
+    createlevel4();
+  }
+  if(level==5){
+    createlevel5();
+  }
 }
     void createlevel3(){
-       obstacles.add(new Obstacle(20, 400, 400, 30));
+      player = new Player(50, 20, 20, 20);
+      checkpoint= new Checkpoint(650,280,40,80);
+      
+        obstacles.add(new Obstacle(20, 200, 400, 30));
+        enemies.add(new Enemy(500, 50, 40, 40));
     }
-
+    
+ void createlevel4(){
+    player = new Player(100, 30, 20, 20);
+    checkpoint= new Checkpoint(700,100,40,80);
+     obstacles.add(new Obstacle(20, 200, 1000, 30));
+     enemies.add(new Enemy(500, 50, 40, 40));
+     enemies.add(new Enemy(300, 50, 40, 40));
+     enemies.add(new Enemy(420, 50, 40, 40));
+     enemies.add(new Enemy(200, 50, 40, 40));
+     enemies.add(new Enemy(600, 50, 40, 40));
+      obstacles.add(new Button(160, 100, 20, 20));
+     
+ }
+ void createlevel5(){
+   player = new Player(100, 30, 20, 20);
+   obstacles.add(new Obstacle(20, 200, 1000, 30));
+    obstacles.add(new Ending(500, 50, 100, 100));
+    checkpoint= new Checkpoint(2000,2000,10,10);
+ }
   void update() {
     checkpoint.updateObject();
     player.updateObject();

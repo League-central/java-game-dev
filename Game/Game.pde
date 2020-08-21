@@ -3,6 +3,7 @@ PImage backgroundImage;
 static int windowWidth;
 static int windowHeight;
 boolean displayDebugColliders = false;
+boolean isEnd = false;
 
 void setup() {
   size(800, 600);
@@ -14,6 +15,7 @@ void setup() {
 }
 
 void draw() {
+  if(isEnd==false){
   if (backgroundImage != null) {
     background(backgroundImage);
   } else {
@@ -21,6 +23,11 @@ void draw() {
   }
   world.draw();
   world.update();
+  }
+  else{
+    fill(0,255,0);
+   text("The end",525,100); 
+  }
 }
 
 void keyPressed() {
