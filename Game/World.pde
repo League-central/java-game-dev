@@ -13,11 +13,20 @@ public class World {
      obstacles.add(new Obstacle(1400, 400, 200, 30));
      obstacles.add(new Obstacle(1800, 200, 200, 30));
      obstacles.add(new Obstacle(2000, 0, 100, 30));
-     obstacles.add(new Button(2000, -200, 40, 30,new Obstacle(2200, 0, 200, 30),(2 * 1000)));
+     obstacles.add(new Button(2000, -200, 40, 30,new Obstacle(2200, 0, 200, 30),(1 * 1000)));
+     obstacles.add(new Obstacle(2500, -1000, 80, 900));
      obstacles.add(new Obstacle(3200, 0, 80, 30));
-     obstacles.add(new Obstacle(2300,-10000 - 200, 80, 10000));
+     obstacles.add(new Obstacle(4200, 200, 80, 30));
+     obstacles.add(new Obstacle(5200, 200, 40, 30));
+     obstacles.add(new Obstacle(5400, 200, 40, 30));
+     obstacles.add(new Obstacle(5600, 200, 40, 30));
+     obstacles.add(new Obstacle(5800, 200, 40, 30));
+     obstacles.add(new Obstacle(6000, 200, 100, 30));
+     obstacles.add(new Obstacle(6400, 200, 60, 30));
+     obstacles.add(new Obstacle(7400, 200, 200, 30));
+     obstacles.add(new Goal(8000, 200, 120, 30));
     //enemies.add(new Enemy(300, 100, 40, 40));
-  }//wwwww
+  }
 void addObstacle(GameObject go){
 obstacles.add(go);
 }

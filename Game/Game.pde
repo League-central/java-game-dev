@@ -1,13 +1,14 @@
 World world;
 double dx = 0;
 double dy = 0;
-double parallaxX = 0;
+double parallaxX = 0;//
 double parallaxY = 0;
 PImage backgroundImage;
 static int windowWidth;
 static int windowHeight;
 boolean displayDebugColliders = false;
 boolean jumpCheatActivated = false;
+boolean isEnd =  false;
 
 void setup() {
   size(1600, 800);
@@ -20,23 +21,32 @@ void setup() {
 }
 
 void draw() {
-  parallaxX = -((dx/8) % 800);
-  parallaxY = -((dy/8) % 600);
-  if (backgroundImage != null) {//
-    image(backgroundImage, (int)parallaxX, (int)parallaxY);
-    image(backgroundImage, (int)parallaxX + width, (int)parallaxY + height);
-    image(backgroundImage, (int)parallaxX + width, (int)parallaxY - height);
-    image(backgroundImage, (int)parallaxX - width, (int)parallaxY + height);
-    image(backgroundImage, (int)parallaxX, (int)parallaxY - height);
-    image(backgroundImage, (int)parallaxX, (int)parallaxY + height);
-    image(backgroundImage, (int)parallaxX - width, (int)parallaxY);
-    image(backgroundImage, (int)parallaxX + width, (int)parallaxY);
-    image(backgroundImage, (int)parallaxX - width, (int)parallaxY - height);
+  if (!isEnd) {
+    parallaxX = -((dx/8) % 800);
+    parallaxY = -((dy/8) % 600);
+    if (backgroundImage != null) {//
+      image(backgroundImage, (int)parallaxX, (int)parallaxY);
+      image(backgroundImage, (int)parallaxX + width, (int)parallaxY + height);
+      image(backgroundImage, (int)parallaxX + width, (int)parallaxY - height);
+      image(backgroundImage, (int)parallaxX - width, (int)parallaxY + height);
+      image(backgroundImage, (int)parallaxX, (int)parallaxY - height);
+      image(backgroundImage, (int)parallaxX, (int)parallaxY + height);
+      image(backgroundImage, (int)parallaxX - width, (int)parallaxY);
+      image(backgroundImage, (int)parallaxX + width, (int)parallaxY);
+      image(backgroundImage, (int)parallaxX - width, (int)parallaxY - height);
+    } else {
+      background(255, 255, 255);
+    }
+    world.draw();
+    world.update();
   } else {
-    background(255, 255, 255);
+    background(0, 0, 0);
+    textSize(32);
+    fill(#00FF1F);
+    text("Game Over! You Win!", width/2 - 180, height/4);
+    textSize(28);
+    text("Hit r to restart.", width/2 - 160, height/4 + 100);
   }
-  world.draw();
-  world.update();
 }
 
 void keyPressed() {
@@ -61,10 +71,25 @@ void keyPressed() {
   if (keyCode == 80) {
     displayDebugColliders = !displayDebugColliders;
   }
+  //Z key cheat code
   if (keyCode == 90) {
-    world.player.speedLimit = 11;
-    world.player.jumpStrength = 11;
-    jumpCheatActivated = true;
+    if (!jumpCheatActivated) {
+      world.player.speedLimit = 11;
+      world.player.jumpStrength = 11;
+      jumpCheatActivated = true;
+      world.player.maxJumps = 1000;
+    } else {
+      world.player.speedLimit = world.player.speedStart;
+      world.player.jumpStrength = world.player.jumpStart;
+      jumpCheatActivated = false;
+      world.player.maxJumps = 2;
+    }
+  }
+  //R3 key
+  if (keyCode == 82) {
+    world.player.x = world.player.startX;
+    world.player.y = world.player.startY;
+    isEnd = false;
   }
 }
 

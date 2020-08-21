@@ -1,4 +1,4 @@
-public class Button extends GameObject {
+public class Button extends Obstacle {
   boolean isPressed = false;
   GameObject createdObject;
   int activeDuration;
@@ -20,12 +20,12 @@ public class Button extends GameObject {
   }
 
   void update() {
-    if(isPressed){
-    if((millis() / 500) % 2 == 0){//
-    objColor = color(0, 0, 255);
-    }else{
-    objColor = color(#15216C);
-    }
+    if (isPressed) {
+      if ((millis() / 100) % 2 == 0) {
+        objColor = color(0, 0, 255);
+      } else {
+        objColor = color(#15216C);
+      }
     }
     if (millis() > timeActivated + activeDuration && isPressed) {
       isPressed = false;
@@ -38,7 +38,9 @@ public class Button extends GameObject {
 
   void collidedWith(GameObject other) {
     if (other.type.equalsIgnoreCase("player") && !isPressed) {
-      buttonPressed();
+      if (other.y <= y  + height / 2) {
+        buttonPressed();
+      }
     }
   }
 }

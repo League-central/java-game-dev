@@ -1,6 +1,10 @@
 public class Player extends GameObject {
-  double speedLimit = 6;
-  double jumpStrength = 6;
+  double jumpStart = 6;
+  double speedStart = 6;
+  double speedLimit = speedStart;
+  double jumpStrength = jumpStart;
+  double startX = 0;
+  double startY = 0;
   boolean left = false;
   boolean right = false;
   boolean up = false;
@@ -16,16 +20,20 @@ public class Player extends GameObject {
     isAffectedByDrag = true;
     drawX = x;
     drawY = y;
+    startX = x;
+    startY = y;
   }
 
   void update() {
     if (y > 542) {
-      exit();
+      x = startX;
+      y = startY;
     }
     if (x >= 1400 && !jumpCheatActivated) {
-      jumpStrength = 9;
-      speedLimit = 9;
+      jumpStrength = 8;
+      speedLimit = 8;
     }
+
     dx = x - drawX;
     dy = y - drawY;
 
@@ -82,10 +90,11 @@ public class Player extends GameObject {
     GameObject check = new CollisionCheck(x, y, width, height, type);
     GameObject hit = world.getCollisionWith(check, world.obstacles);
     if (hit != null) {
-      jumpCount = maxJumps;
-      if (hit.type.equals("Enemy")) {
-        x = 20;
-        y = 20;
+      if (hit.y >= y + height/2) {
+        jumpCount = maxJumps;
+      }
+      if (hit.type.equals("Goal")) {
+        isEnd = true;
       }
       return true;
     }
