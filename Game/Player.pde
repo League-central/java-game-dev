@@ -1,5 +1,6 @@
+
 public class Player extends GameObject {
-  double speedLimit = 8;
+  double speedLimit = 6;
   double jumpStrength = 5;
   boolean left = false;
   boolean right = false;
@@ -14,6 +15,11 @@ public class Player extends GameObject {
   }
 
   void update() {
+    if (hasGoneOffScreen()) {
+      x=45;
+      y=700;
+    }
+
     move();
   }
 
@@ -50,7 +56,7 @@ public class Player extends GameObject {
         canJump = true;
       }
     } else if (!willCollideAt(x, y+velocity.y)) {
-      y += velocity.y;
+      y += velocity.y;  
       velocity.x*=0.2;
     }
   }
@@ -64,16 +70,31 @@ public class Player extends GameObject {
   boolean willCollideAt(double x, double y) {
     GameObject check = new CollisionCheck(x, y, width, height);
     GameObject hit = world.getCollisionWith(check, world.obstacles);
+    GameObject hit2 = world.getCollisionWith(check, world.portals);
+
     if (hit != null) {
-      if(hit.type.equals("Enemy")){
-        x = 20;
-        y = 20;
+      if (hit.type.equals("Spike")) {
+        this.x = 50;
+        this.y = 700;
       }
       return true;
+    }  
+    if (hit2 != null) {
+      if (hit2.type.equals("Portal")) {
+        if (world.level==1) {
+          world.createLevelTwo();
+        } else {
+          isEnd = true;
+        }
+      }
     }
     return false;
   }
 
+
   void collidedWith(GameObject other) {
+    if (other.type.equals("Portal")) {
+      world.createLevelTwo();
+    }
   }
 }

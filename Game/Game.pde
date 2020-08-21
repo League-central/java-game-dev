@@ -3,9 +3,10 @@ PImage backgroundImage;
 static int windowWidth;
 static int windowHeight;
 boolean displayDebugColliders = false;
+boolean isEnd = false;
 
 void setup() {
-  size(800, 600);
+  size(800, 800);
   windowWidth = width;
   windowHeight = height;
   backgroundImage = loadImage("landscape.png");
@@ -13,7 +14,8 @@ void setup() {
   world = new World();
 }
 
-void draw() {
+void draw() { 
+  if (isEnd==false) {
   if (backgroundImage != null) {
     background(backgroundImage);
   } else {
@@ -21,6 +23,11 @@ void draw() {
   }
   world.draw();
   world.update();
+}
+ else { 
+    background(1, 1, 1);
+    text ("you win wow nice good job",400, 400);
+ }
 }
 
 void keyPressed() {
@@ -44,6 +51,10 @@ void keyPressed() {
   // P key
   if (keyCode == 80) {
     displayDebugColliders = !displayDebugColliders;
+  }
+  // 2 key
+  if (keyCode == 50) {
+    world.createLevelTwo ();
   }
 }
 

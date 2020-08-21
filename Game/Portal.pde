@@ -1,10 +1,10 @@
-public class Obstacle extends GameObject {
+public class Portal extends GameObject {
 
-  Obstacle(double x, double y, int width, int height) {
+  Portal(double x, double y, int width, int height) {
     super(x, y, width, height);
-    type = "Obstacle";
+    type = "Portal";
     isAffectedByGravity = false;
-    objColor=color(16, 140, 65);
+    objColor=color (65, 0, 250);
   }
 
   void update() {

@@ -1,10 +1,9 @@
-public class Obstacle extends GameObject {
+public class Spike extends GameObject {
 
-  Obstacle(double x, double y, int width, int height) {
+  Spike(double x, double y, int width, int height) {
     super(x, y, width, height);
-    type = "Obstacle";
+    type = "Spike";
     isAffectedByGravity = false;
-    objColor=color(16, 140, 65);
   }
 
   void update() {
