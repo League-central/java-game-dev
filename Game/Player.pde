@@ -28,6 +28,8 @@ public class Player extends GameObject {
     if (y > 542) {
       x = startX;
       y = startY;
+      world.player.speedLimit = world.player.speedStart;
+      world.player.jumpStrength = world.player.jumpStart;
     }
     if (x >= 1400 && !jumpCheatActivated) {
       jumpStrength = 8;

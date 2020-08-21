@@ -89,6 +89,8 @@ void keyPressed() {
   if (keyCode == 82) {
     world.player.x = world.player.startX;
     world.player.y = world.player.startY;
+    world.player.speedLimit = world.player.speedStart;
+    world.player.jumpStrength = world.player.jumpStart;
     isEnd = false;
   }
 }
